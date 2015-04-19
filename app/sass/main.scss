@@ -1,0 +1,117 @@
+/*
+  CSS Base
+*/
+
+@import 'modules/modules';
+body{
+	//background:url(../test/home.jpg) no-repeat center 0;
+	background-color:$colorGrayLighter;
+	border:1px solid white;
+}
+
+.main-header{
+	background-color:$headerWhite;
+	border-bottom:1px solid $headerBorder;
+	padding:0.5%;
+	width:100%;
+}
+
+
+
+@media only screen 
+  and (min-device-width: 500px) {
+
+  	.main-header{
+  		height:86px;
+  		padding:0.5%;
+  	}
+
+}
+
+
+.main-menu{
+
+	margin:0 auto;
+	max-width:960px;
+	ul{
+		float: right;
+		list-style: none;
+		padding:0;
+		text-align: right;
+		width:50%;
+	}
+	li{
+		display: inline-block;
+		padding:0 5%;
+		position: relative;
+	}
+	li > a{
+		//border-bottom:3px solid white;
+		color:$colorBlack;
+		font:700 .8em 'Lato', Helvetica;
+		//padding-bottom:3px;
+		position: relative;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		&:before{
+			background-color:white;
+			content:' ';
+			display: block;
+			height:4px;
+			position:absolute;
+			top:18px;
+			width:100%;
+			z-index:1;
+		}
+		&:after{
+			background-color:$menuGreen;
+			content:' ';
+			display: block;
+			height:4px;
+			position: absolute;
+			width:100%;
+			z-index: 2;
+			-webkit-transform-origin: 0 100%;
+			-moz-transform-origin: 0 100%;
+			-ms-transform-origin: 0 100%;
+			-o-transform-origin: 0 100%;
+			transform-origin: 0 100%;
+			@include scale(1, .01);
+			@include transition-transform(.3s, ease-out);
+		}
+		&:hover, &.selected{
+			&:after{
+				@include scale(1, 1);
+				height:4px;
+				
+			}
+			
+		}
+	}
+}
+.main-footer{
+	background-color:darken($menuGreen, 5%);
+	color:white;
+	padding:0 0 .3em 0;
+	ul{
+		list-style:none;
+		margin:0 auto;
+		max-width:960px;
+		padding:0;
+		text-align: right;
+		width:100%;
+	}
+	li{
+		display: inline-block;
+	}
+	li:first-child {
+		font:italic .8em 'Lato', Helvetica;
+		padding:0 1em 0 0;
+	}
+	a{
+		color:white;
+		font-size:.9em;
+		padding:0 .3em;
+	}
+}
