@@ -36,6 +36,7 @@
     <header class="main-header">
       <nav class="main-menu">
         <a class="main-logo" href="/"><img src="images/logo-iris.svg" alt="SuperIRis" /></a>
+        <button id="mobile-menu" class="hamburger-btn "><span>Menu</span></button>
         <ul>
           <li><a href="#">Acerca de mí</a></li>
           <li><a href="#">Proyectos</a></li>
@@ -43,66 +44,68 @@
         </ul>
       </nav>
     </header>
-    <section class="intro-container">
-      <aside class="me"></aside>
-      <article class="intro">
-        <h1>¡Super hola!</h1>
-        <p>Me llamo Iris, me dedico al desarrollo web y las nuevas tecnologías digitales.</p>
-        <nav class="social-menu">
-          <ul>
-            <li><a href="http://twitter.com/SuperIRis" target="_blank"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="http://github.com/SuperIRis" target="_blank"><i class="fa fa-github-alt"></i></a></li>
-            <li><a href="http://superiris.tumblr.com" target="_blank"><i class="fa fa-tumblr"></i></a></li>
-            <li><a href="https://mx.linkedin.com/in/superiris" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-          </ul>
-        </nav>
-      </article>
-      <button class="down-btn"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15.38px" height="10.274px" viewBox="0 0 15.38 10.274" enable-background="new 0 0 15.38 10.274" xml:space="preserve"><polyline class="arrow"fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="13.183,2.163 7.682,7.664 2.181,2.163 "/></svg></button>
-    </section>
-    <section class="projects-preview">
-      <header class="projects-preview-header">
-        <h1>Proyectos recientes</h1>
-      </header>
-      <ul class="projects-preview-list">
-        <li>
-          <a href="#">
-            <article class="project-preview-item">
-              <img src="images/projects/home-warner-batalla300.jpg" alt="Warner: Batalla 300" />
-              <div class="project-preview-data">
-                <h1 class="project-title">Warner<br>Batalla 300</h1>
-                <h2 class="project-tech">nodejs + twitter api</h2>
-              </div>
-            </article>
-          </a>
-        
-        </li><li>
-          <a href="#">
-            <article class="project-preview-item">
-              <img src="images/projects/home-warner-batalla300.jpg" alt="Sonrics: Sitio web" />
-              <div class="project-preview-data">
-                <h1 class="project-title">Sonrics<br>Sitio web</h1>
-                <h2 class="project-tech">javascript + jquery</h2>
-              </div>
-            </article>
-          </a>
-        
-        </li><li>
-          <a href="#">
-            <article class="project-preview-item">
-              <img src="images/projects/home-warner-batalla300.jpg" alt="Metlife: Minitoons" />
-              <div class="project-preview-data">
-                <h1 class="project-title">Metlife<br>Minitoons</h1>
-                <h2 class="project-tech">javascript + canvas</h2>
-              </div>
-            </article>
-          </a>
-        </li>
-      </ul>
-    </section>
+    <main id="main-container" class="main-container">
+      <section id="intro-container" class="intro-container">
+        <aside id="me" class="me"></aside>
+        <article class="intro">
+          <h1>¡Super hola!</h1>
+          <p>Me llamo Iris, me dedico al desarrollo web y las nuevas tecnologías digitales.</p>
+          <nav class="social-menu">
+            <ul>
+              <li><a href="http://twitter.com/SuperIRis" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="http://github.com/SuperIRis" target="_blank"><i class="fa fa-github-alt"></i></a></li>
+              <li><a href="http://superiris.tumblr.com" target="_blank"><i class="fa fa-tumblr"></i></a></li>
+              <li><a href="https://mx.linkedin.com/in/superiris" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </nav>
+        </article>
+        <button id="home-down-btn" class="down-btn"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15.38px" height="10.274px" viewBox="0 0 15.38 10.274" enable-background="new 0 0 15.38 10.274" xml:space="preserve"><polyline class="arrow"fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="13.183,2.163 7.682,7.664 2.181,2.163 "/></svg></button>
+      </section>
+      <section class="projects-preview">
+        <header class="projects-preview-header">
+          <h1>Proyectos recientes</h1>
+        </header>
+        <ul class="projects-preview-list">
+          <li>
+            <a href="#">
+              <article class="project-preview-item">
+                <img src="images/projects/home-warner-batalla300.jpg" alt="Warner: Batalla 300" />
+                <div class="project-preview-data">
+                  <h1 class="project-title">Warner<br>Batalla 300</h1>
+                  <h2 class="project-tech">nodejs + twitter api</h2>
+                </div>
+              </article>
+            </a>
+          
+          </li><li>
+            <a href="#">
+              <article class="project-preview-item">
+                <img src="images/projects/home-warner-batalla300.jpg" alt="Sonrics: Sitio web" />
+                <div class="project-preview-data">
+                  <h1 class="project-title">Sonrics<br>Sitio web</h1>
+                  <h2 class="project-tech">javascript + jquery</h2>
+                </div>
+              </article>
+            </a>
+          
+          </li><li>
+            <a href="#">
+              <article class="project-preview-item">
+                <img src="images/projects/home-warner-batalla300.jpg" alt="Metlife: Minitoons" />
+                <div class="project-preview-data">
+                  <h1 class="project-title">Metlife<br>Minitoons</h1>
+                  <h2 class="project-tech">javascript + canvas</h2>
+                </div>
+              </article>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
     <footer class="main-footer">
       <nav class="footer-menu">
         <ul>
-          <li>¡Sígueme</li>
+          <li>¡Sígueme!</li>
           <li><a href="http://twitter.com/SuperIRis"><i class="fa fa-twitter"></i></a></li>
           <li><a href="http://github.com/SuperIRis" target="_blank"><i class="fa fa-github-alt"></i></a></li>
           <li><a href="http://superiris.tumblr.com" target="_blank"><i class="fa fa-tumblr"></i></a></li>
@@ -110,9 +113,8 @@
         </ul>
       </nav>
     </footer>
-    <!-- build:js js/main.min.js -->
-    <script src="js/main.js"></script>
-    <!-- endbuild -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bundle.js"></script>
 
     <!-- Google Analytics -->
     <script>

@@ -27,3 +27,73 @@ body {
 body{
   font-family: 'Lato', sans-serif;
 }
+$hamburgerWidth:30px;
+$hamburgerHeight:20px;
+$breadHeight:4px;
+.hamburger-btn{
+  background-color:transparent;
+  border:none;
+  cursor: pointer;
+  display: inline-block;
+  outline:none;
+  position: relative;
+  width: $hamburgerWidth;
+  height: $hamburgerHeight;
+  text-indent: -9999em;
+  z-index: 2;
+}
+.hamburger-btn span,
+.hamburger-btn span:before,
+.hamburger-btn span:after {
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  background-color: $menuGreen;
+  display: block;
+  position: absolute;
+  width: $hamburgerWidth;
+  height: $breadHeight;
+  left: 0;
+}
+.hamburger-btn span:before,
+.hamburger-btn span:after {
+  content: " ";
+}
+.hamburger-btn span {
+  top: $breadHeight*2;
+}
+.hamburger-btn span:before {
+  -moz-transform-origin: 33% 100%;
+  -ms-transform-origin: 33% 100%;
+  -webkit-transform-origin: 33% 100%;
+  transform-origin: 33% 100%;
+  top: $breadHeight* -2;
+  z-index: 10;
+}
+.hamburger-btn span:after {
+  -moz-transform-origin: 33% 0;
+  -ms-transform-origin: 33% 0;
+  -webkit-transform-origin: 33% 0;
+  transform-origin: 33% 0;
+  top: $breadHeight*2
+}
+.hamburger-btn.active span,
+.hamburger-btn.active span:before,
+.hamburger-btn.active span:after {
+  background-color: transparent;
+}
+.hamburger-btn.active span:before {
+  -moz-transform: translateY($breadHeight) translateX(1px) rotate(45deg);
+  -ms-transform: translateY($breadHeight) translateX(1px) rotate(45deg);
+  -webkit-transform: translateY($breadHeight) translateX(1px) rotate(45deg);
+  transform: translateY($breadHeight) translateX(1px) rotate(45deg);
+  background-color: $menuGreen;
+}
+.hamburger-btn.active span:after {
+  -moz-transform: translateY(-$breadHeight) translateX(1px) rotate(-45deg);
+  -ms-transform: translateY(-$breadHeight) translateX(1px) rotate(-45deg);
+  -webkit-transform: translateY(-$breadHeight) translateX(1px) rotate(-45deg);
+  transform: translateY(-$breadHeight) translateX(1px) rotate(-45deg);
+  background-color: $menuGreen;
+}
