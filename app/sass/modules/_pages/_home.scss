@@ -183,7 +183,10 @@
   			display: inline-block;
   			width:33.3%;
   		}
-  		li+li{
+  		li:first-child{
+  			margin-left:-1px;
+  		}
+  		article{
   			border-left:1px solid white;
   		}
   		
@@ -254,11 +257,14 @@
 
   	}
   	.projects-preview{
+  		font-size:1.2em;
   		margin:15em 0 0;
   	}
   	.projects-preview-list{
   		article{
-  			background-color:#222222;;
+  			background-color:#222222;
+
+
   		}
   		a article > img{
   			@include transition(all, .3s, ease-out);
@@ -266,8 +272,18 @@
   		a:hover article > img{
   			@include scale(0.9,0.9);
   		}
+  		a:hover article{
+  			
+  			//@include rotateY(10deg);
+  		}
   	}
-  	
+  	.project-preview-item{
+  		background-size:cover;
+  	}
+  	.b300-home{
+  		background:url(../images/projects/home-warner-batalla300.jpg) center center no-repeat;
+
+  	}
 }
 
 @media only screen 

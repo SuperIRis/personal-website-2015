@@ -76,5 +76,16 @@
   border-radius: $radius;
 
 }
+@mixin rotateY($deg){
+  
+  -ms-transform-origin: right center; /* IE 9 */
+  -webkit-transform-origin: right center; /* Chrome, Safari, Opera */
+  transform-origin: right center;
+  transform: rotateY($deg);
+  -ms-transform: rotateY($deg); /* IE 9 */
+  -webkit-transform: rotateY($deg); /* Safari and Chrome */
+  -webkit-perspective: 1500px; /* Chrome, Safari, Opera */
+  perspective: 1500px;
+}
 
  
