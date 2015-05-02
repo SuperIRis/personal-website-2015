@@ -1,0 +1,276 @@
+.aboutme-container{
+	background-color:white;
+	position:relative;
+	@include transition-transform(.3s, ease-out);
+}
+.stats{
+	background-color:$menuGreen;
+	font:400 1em Lato, sans-serif;
+	color:white;
+	ul{
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+	li{
+		display: inline-block;
+		margin:1em 0;
+		vertical-align: top;
+		width:50%;
+	}
+	li + li{
+		border-left:1px solid rgba(255,255,255,0.4);
+	}
+	p{
+		margin:0;
+		text-align: center;
+	}
+	p:nth-child(2){
+		margin:0 1em;
+	}
+	
+}
+.stats-number{
+	font-size:4.5em;
+	font-weight:100;
+}
+.profile{
+	color:$colorGrayDark;
+	font:300 1em Lato, sans-serif;
+	padding:1em 1.5em;
+}
+.square-btn{
+	border:2px solid $menuGreen;
+	color:$menuGreen;
+	display:inline-block;
+	font-size:0.9em;
+	font-weight:700;
+	letter-spacing:0.15em;
+	padding:0.3em 1.2em;
+	position:relative;
+	text-decoration:none;
+	text-transform:uppercase;
+	z-index:2;
+	@include transition(color, .2s, ease-out);
+	&:active{
+		border-color:darken($menuGreen, 10%);
+		color:darken($menuGreen, 10%);
+	}
+	&:visited{
+		color:darken($menuGreen, 10%);
+	}
+	&:before{
+		background-color:$menuGreen;
+		content:" ";
+		height:100%;
+		left:0;
+		position:absolute;
+		top:0;
+		width:100%;
+		z-index:-1;
+		@include transition(all, .2s, ease-out);
+		@include scale(0,0);
+	}
+	&:hover{
+		color:white;
+		&:before{
+			@include scale(0.98,0.9);
+		}
+	}
+}
+.cv-container{
+	margin-top:3em;
+	text-align:center;
+}
+.me-about{
+	margin:1em 0 3em;
+	text-align:center;
+}
+.random-facts{
+	border-top:1px solid $colorGrayLighter;
+	border-bottom:1px solid $colorGrayLighter;
+	font:300 1em Lato, sans-serif;
+	margin:0 0 2em;
+	padding:1.7em 0 2em;
+	ul{
+		list-style: none;
+		margin:0;
+		padding:0;
+	}
+	li{
+		text-align:center;
+		width:100%;
+	}
+	h1{
+		color:$menuGreen;
+		margin:0 0 0.1em;
+		text-align: center;
+	}
+}
+.skills{
+	
+	h1{
+		font-size:1.1em;
+		text-align: center;
+		text-transform:uppercase;
+	}
+	h2{
+		font-size:1em;
+		margin-top:3em;
+		text-align: center;
+	}
+	ul{
+		font:300 1em Lato, sans-serif;
+		list-style: none;
+		margin:0;
+		padding:0;
+	}
+	li{
+		margin:1em 1em;
+		position:relative;
+		&:nth-child(2) .skill-description, &:nth-child(3) .skill-description, &:nth-child(7) .skill-description, &:nth-child(10) .skill-description{
+			padding-top:0;
+		}
+	}
+	h3{
+		font-size:1em;
+		margin:0;
+	}
+	p{
+		line-height: 1em;
+		margin:0;
+	}
+	figure{
+		display: inline-block;
+	}
+}
+.text-skills{
+	li {
+		text-align: center;
+	}
+}
+.skill-description{
+	display:inline-block;
+	padding:10px 0 0 10px;
+	position:absolute;
+	top:0;
+	left:50px;
+}
+
+.circle-graph-0{
+	background:transparent url(../images/skills-icons.svg) 3px 5px no-repeat;
+	background-size:273%;
+}
+.circle-graph-1{
+	background:transparent url(../images/skills-icons.svg) -90px 5px no-repeat;
+	background-size:273%;
+}
+.circle-graph-2{
+	background:transparent url(../images/skills-icons.svg) -43px 5px no-repeat;
+	background-size:273%;
+}
+.hobbies{
+	background-color:$colorGrayDark;
+	color:white;
+	margin-top:3em;
+	padding:1em 0 3em;
+}
+.hobbies-title{
+	//margin:4em 0 2em;
+}
+.hobbies-list{
+	li{
+		text-align: center;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	.stats{
+		li{
+			width:25%;
+		}
+	}
+}
+@media only screen and (min-width: 900px) {
+	.stats{
+		ul{
+			margin:0 auto;
+			max-width:900px;
+		}
+	}
+	.stats-number{
+		font-size:7em;
+	}
+	.profile{
+		width:75%;
+	}
+	.cv-container{
+		margin-top:1.5em;
+		text-align: left;
+	}
+	.me-about{
+		background-color:white;
+		position:absolute;
+		top:14em;
+		padding-right:2em;
+		right:0;
+		width:22%;
+		img{
+			max-width:250px;
+			width:100%;
+		}
+	}
+	.skills{
+		h1, h2{
+			text-align: left;
+		}
+	}
+	.skill-block{
+		li{
+			text-align: left;
+		}
+	}
+	.info-container{
+		margin:0 auto;
+		max-width:900px;
+	}
+	.text-skills{
+		li{
+			display: inline-block;
+			margin:0.4em 0;
+			vertical-align: top;
+			width:33%;
+		}
+	}
+	.graph-skills{
+		li{
+			display: inline-block;
+			margin:1em 0;
+			width:50%;
+			figure{
+				@include transition-transform(.1s, ease-out);
+			}
+			&:hover figure{
+				@include rotate(10deg);
+			}
+			&:nth-child(2):hover figure, &:nth-child(3):hover figure, &:nth-child(6):hover figure, &:nth-child(7):hover figure, &:nth-child(10):hover figure{
+				@include rotate(-10deg);
+			}
+
+		}
+		p{
+			padding:0 0.5em 0 0;
+		}
+	}
+	.hobbies{
+		background-color:transparent;
+		color:$colorGrayDark;
+		h1{
+			text-align: center;
+		}
+	}
+	
+
+	
+}
+

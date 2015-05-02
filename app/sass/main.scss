@@ -5,7 +5,8 @@
 @import 'modules/modules';
 body{
 	//background:url(../test/home.jpg) no-repeat center 0;
-	background-color:darken($menuGreen, 5%);
+	//background-color:darken($menuGreen, 5%);
+	background-color:$colorGrayLighter;
 	border-left:1px solid white;
 	border-right:1px solid white;
 }

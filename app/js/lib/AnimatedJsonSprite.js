@@ -104,7 +104,6 @@
 		
 	};
 	AnimatedJsonSprite.prototype._onSpriteReady = function(e){
-
 		var tempSpriteIndex/*, tempy=0, horizontalSteps=0, totalWidth, missingPixels*/;
 		this.json = JSON.parse(e.response);
 		this.spritesData = [];
@@ -132,7 +131,10 @@
 		}
 		//
 		this.image = new Image();
-		this.image.onLoad = this._onLoad;
+		var _this = this;
+		this.image.onload = function(){
+			_this._onLoad();
+		};
 		this.image.src = this.spriteURL;
 		if(this.image.complete){
 			this._onLoad();
@@ -144,7 +146,6 @@
 	AnimatedJsonSprite.prototype._onLoad = function(){};
 
 	AnimatedJsonSprite.prototype._animateToEnd = function(){
-
 		var moveForwardBinded = this._moveForward.bind(this);
 		this.mainInterval = setInterval(moveForwardBinded, this.settings.frameRate);
 	};
