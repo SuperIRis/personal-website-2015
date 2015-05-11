@@ -87,5 +87,12 @@
   -webkit-perspective: 1500px; /* Chrome, Safari, Opera */
   perspective: 1500px;
 }
+@mixin transform ($rotate: 90deg, $scale: 1, $skew: 1deg, $translateX:0, $translateY: 0) {
+    -webkit-transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
+    -moz-transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
+    -o-transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
+    -ms-transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
+    transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
+}
 
  

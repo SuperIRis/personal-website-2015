@@ -38,9 +38,9 @@
         <a class="main-logo" href="/"><img src="images/logo-iris.svg" alt="SuperIRis" /></a>
         <button id="mobile-menu" class="hamburger-btn "><span>Menu</span></button>
         <ul>
-          <li><a href="#" class="selected">Acerca de mí</a></li><li>
-              <a href="#">Proyectos</a></li><li>
-              <a href="#">Contacto</a></li>
+          <li><a class="selected" href="#">Acerca de mí</a></li><li>
+              <a class="inactive" href="#">Proyectos</a></li><li>
+              <a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
     </header>
@@ -55,20 +55,20 @@
       </aside>
       <div class="info-container">
         <article class="profile">
-          <p>Comencé a trabajar en agencias digitales en el 2005 como diseñadora web, al finalizar la carrera en Diseño Gráfico. Movida por la pasión de ver mis diseños en movimiento y funcionales me especialicé en el área de desarrolló y cursé una maestría en Multimedia. Mis antecedentes en diseño me han dado una visión especial, con un enfoque en la usabilidad y la calidad visual en proyectos digitales, involucrándome desde la planeación, desarrollo y seguimiento hasta el control de calidad.</p>
+          <p>Comencé a trabajar en agencias digitales en el 2005 como diseñadora web, al finalizar la carrera en Diseño Gráfico. Movida por la pasión de ver mis diseños en movimiento y funcionales me especialicé en el área de desarrollo y cursé una maestría en Multimedia. Mis antecedentes en diseño me han dado una visión especial, con un enfoque en la usabilidad y la calidad visual en proyectos digitales, involucrándome desde la planeación, desarrollo y seguimiento hasta el control de calidad.</p>
           <p>Me encantan las nuevas tecnologías y nunca me quedo quieta, leo constantemente y trato de mantenerme actualizada todo el tiempo, porque me encanta lo que hago.</p>
           <p class="cv-container"><a class="square-btn" href="docs/cv2015.pdf" target="_blank">Descarga mi CV</a></p>
         </article>
         <figure id="me-about" class="me-about">
-          <img src="images/aboutme-me.svg" alt="Yeah!">
+          
         </figure>
-        <aside class="random-facts">
+        <aside id="random-facts" class="random-facts">
           <h1>RANDOM FACTS</h1>
           <ul>
-            <li>Soy cinta negra en TaeKwon Do (3er Dan).</li>
+            <li class="active">Soy cinta negra en TaeKwon Do (3er Dan).</li>
             <li class="hidden unshown">Puedo encontrar una falta ortográfica a metros de distancia.</li>
             <li class="hidden unshown">Puedo hacer un cisne con una sandía.</li>
-            <li class="hidden unshown">Colecciono consolas de Nintendo.</li>
+            <li class="hidden unshown">Tengo todas las consolas de Nintendo.</li>
           </ul>
         </aside>
         <section class="skills">
@@ -175,6 +175,7 @@
       </nav>
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/vendor/snap.svg-min.js"></script>
     <script src="js/vendor/circles.min.js"></script>
     <script src="js/bundle.js"></script>
 

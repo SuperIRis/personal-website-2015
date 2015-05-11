@@ -27,6 +27,7 @@ body {
 body{
   font-family: 'Lato', sans-serif;
 }
+
 $hamburgerWidth:30px;
 $hamburgerHeight:20px;
 $breadHeight:4px;
@@ -96,4 +97,44 @@ $breadHeight:4px;
   -webkit-transform: translateY(-$breadHeight) translateX(1px) rotate(-45deg);
   transform: translateY(-$breadHeight) translateX(1px) rotate(-45deg);
   background-color: $menuGreen;
+}
+.square-btn{
+  background-color:transparent;
+  border:2px solid $menuGreen;
+  color:$menuGreen;
+  display:inline-block;
+  font-size:0.9em;
+  font-weight:700;
+  letter-spacing:0.15em;
+  padding:0.3em 1.2em;
+  position:relative;
+  text-decoration:none;
+  text-transform:uppercase;
+  z-index:2;
+  @include transition(color, .2s, ease-out);
+  &:active{
+    border-color:darken($menuGreen, 10%);
+    color:darken($menuGreen, 10%);
+  }
+  &:visited{
+    color:darken($menuGreen, 10%);
+  }
+  &:before{
+    background-color:$menuGreen;
+    content:" ";
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0;
+    width:100%;
+    z-index:-1;
+    @include transition(all, .2s, ease-out);
+    @include scale(0,0);
+  }
+  &:hover{
+    color:white;
+    &:before{
+      @include scale(0.98,0.9);
+    }
+  }
 }

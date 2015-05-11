@@ -1,92 +1,39 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 /* global $*/
-/* global Circles*/
+
 ;(function(){
 	var page = window.location.pathname.substr(1).replace(/.html/g, "");
-	var AnimatedJsonSprite = require("./lib/AnimatedJsonSprite.js");
-	var AnimatedNumber = require("./lib/AnimatedNumber.js");
+	var Aboutme = require("./sections/aboutme.js");
+	var Contact = require("./sections/contact.js");
+	var Home = require("./sections/home.js");
 	var ScrollMonitor = require("./vendor/scrollMonitor.js");
-	var body = $("html, body");
-	var percentageColors = ["#9ac21e", "#ffd43d", "#00ccd3"];
-	var homeMe, animatedStats=[];
 	function onToggleMobileMenu(e){
 		$(e.currentTarget).toggleClass("active");
 		$("#main-container").toggleClass("mobile-menu-on");
 	}
-	function onScrollHomeDown(e){
-		body.animate({scrollTop:$("#intro-container").height()}, "500", "swing");
-	}
-	function getIdByPercentage(percentage){
-		if(percentage>90){
-			return 0;
-		}
-		else if(percentage > 60){
-			return 1;
-		}
-		else{
-			return 2;
-		}
-	}
 	
-	function setAnimateStats(){
-		var statsNumbers = $(".stats-number");
-		for(var j = 0, limit2 = statsNumbers.length; j<limit2; j++){
-			animatedStats.push(new AnimatedNumber(statsNumbers[j]));
-			animatedStats[animatedStats.length-1].init();
-		}
-	}
-	function animateStats(){
-		for(var j = 0, limit2 = animatedStats.length; j<limit2; j++){
-			animatedStats[j].start();
-		}
-	}
-	//
+	
 	switch(page){
 		case "index":
 		case "":
-			$("#home-down-btn").on("click", onScrollHomeDown);
-			homeMe = new AnimatedJsonSprite("spritesheets/homes-normal.png", document.getElementById("me"), {loop:true, frameRate:40});
-			homeMe.start();
+			Home.init();
 			break;
 		case "acerca":
-			var graphs = $(".circle-graph"), circles = [], config;
-			var graphsWatcher = ScrollMonitor.create($("#programming-skills")[0]);
-			var statsWatcher = ScrollMonitor.create($("#stats")[0]);
-			
-			
-			graphsWatcher.enterViewport(function(){
-				for(var i = 0, limit = graphs.length; i<limit; i++){
-					
-					config = {
-						id:			graphs[i].id,
-						value: 		$(graphs[i]).attr("data-percentage"),
-						radius: 	25,
-						duration: 	1000,
-						/* jshint ignore:start */
-						text: 		function(value){return "";},
-						/* jshint ignore:end */
-						textClass: 	"circle-graph-"+getIdByPercentage($(graphs[i]).attr("data-percentage")),
-						width: 		5,
-						colors: 	["#e1e1e1", percentageColors[getIdByPercentage($(graphs[i]).attr("data-percentage"))]]
-					};
-
-					circles.push(Circles.create(config));
-				}
-			});
-			statsWatcher.enterViewport(function(){
-				animateStats();
-			});
-			setAnimateStats();
+			Aboutme.init();
+			break;
+		case "contacto":
+			Contact.init();
 			break;
 		default:
 			console.warn("Se desconoce el html:", page);
 	}
 	$("#mobile-menu").on("click", onToggleMobileMenu);
 
-
 })();
-},{"./lib/AnimatedJsonSprite.js":2,"./lib/AnimatedNumber.js":3,"./vendor/scrollMonitor.js":4}],2:[function(require,module,exports){
+
+
+},{"./sections/aboutme.js":4,"./sections/contact.js":5,"./sections/home.js":6,"./vendor/scrollMonitor.js":7}],2:[function(require,module,exports){
 ;(function(){
 	"use strict";
 	var ajaxLoad = function(url, callback){
@@ -327,6 +274,294 @@
 	module.exports = AnimatedNumber;
 })();
 },{}],4:[function(require,module,exports){
+/* global $*/
+/* global Circles*/
+/* global Snap*/
+
+;(function(){
+	"use strict";
+
+	var Aboutme = {};
+	
+	//var ScrollMonitor = require("../vendor/scrollMonitor.js");
+	
+	var AnimatedNumber = require("../lib/AnimatedNumber.js");
+	var percentageColors = ["#9ac21e", "#ffd43d", "#00ccd3"];
+	var graphs = $(".circle-graph"), circles = [], config;
+	//var graphsWatcher = ScrollMonitor.create($("#programming-skills")[0]);
+	//var statsWatcher = ScrollMonitor.create($("#stats")[0]);
+	var animatedStats=[];
+	function svgAnimate(f){
+		console.log("svg animate");
+		var leftEye = f.select("#left-eye");
+		var rightEye = f.select("#right-eye");
+		var leftEyeClosed = f.select("#left-eye-closed");
+		var rightEyeClosed = f.select("#right-eye-closed");
+		leftEyeClosed.addClass("hidden");
+		rightEyeClosed.addClass("hidden");
+		setInterval(function(){
+			leftEye.addClass("hidden");
+			rightEye.addClass("hidden");
+			leftEyeClosed.removeClass("hidden");
+			rightEyeClosed.removeClass("hidden");
+			setTimeout(function(){
+				leftEye.removeClass("hidden");
+				rightEye.removeClass("hidden");
+				leftEyeClosed.addClass("hidden");
+				rightEyeClosed.addClass("hidden");
+			}, 300);
+		}, 4000);
+	}
+	function getIdByPercentage(percentage){
+		if(percentage>90){
+			return 0;
+		}
+		else if(percentage > 60){
+			return 1;
+		}
+		else{
+			return 2;
+		}
+	}
+	
+	function setAnimateStats(){
+		var statsNumbers = $(".stats-number");
+		for(var j = 0, limit2 = statsNumbers.length; j<limit2; j++){
+			animatedStats.push(new AnimatedNumber(statsNumbers[j]));
+			animatedStats[animatedStats.length-1].init();
+		}
+	}
+	function animateStats(){
+		console.log("animate stats");
+		for(var j = 0, limit2 = animatedStats.length; j<limit2; j++){
+			animatedStats[j].start();
+		}
+	}
+	function createGraphs(){
+		for(var i = 0, limit = graphs.length; i<limit; i++){
+			
+			config = {
+				id:			graphs[i].id,
+				value: 		$(graphs[i]).attr("data-percentage"),
+				radius: 	25,
+				duration: 	1000,
+				/* jshint ignore:start */
+				text: 		function(value){return "";},
+				/* jshint ignore:end */
+				textClass: 	"circle-graph-"+getIdByPercentage($(graphs[i]).attr("data-percentage")),
+				width: 		5,
+				colors: 	["#e1e1e1", percentageColors[getIdByPercentage($(graphs[i]).attr("data-percentage"))]]
+			};
+
+			circles.push(Circles.create(config));
+		}
+	}
+	function animateRandomFacts(){
+		var factToGo, factToAppear;
+		var factsInterval = setInterval(function(){			
+			factToAppear = $("#random-facts").find(".active").next().length===0 ? $("#random-facts").find("li:nth-child(1)") :  $("#random-facts").find(".active").next();
+			factToGo = $("#random-facts").find(".active").addClass("unshown").removeClass("active");
+			factToAppear.removeClass("hidden").addClass("active").addClass("unshown");
+			setTimeout(function(){
+				factToGo.addClass("hidden");
+				factToAppear.removeClass("unshown");
+			}, 400);
+		},5000);
+	}
+	
+	/*graphsWatcher.enterViewport(function(){
+		
+	});
+	statsWatcher.enterViewport(function(){
+		animateStats();
+	});*/
+	
+	Aboutme.setSVG = function(){
+		if(typeof Snap !== "function"){
+			console.error("No se encuentra la librería de Snap.svg");
+			return;
+		}
+		var s = new Snap("#me-about");
+		Snap.load("images/aboutme-me.svg", function(f){
+			svgAnimate(f);
+			s.append(f);
+		});
+	};
+	Aboutme.init = function(){
+		setAnimateStats();
+		createGraphs();
+		animateRandomFacts();
+		Aboutme.setSVG();
+	};
+
+	module.exports = Aboutme;
+})();
+
+
+},{"../lib/AnimatedNumber.js":3}],5:[function(require,module,exports){
+/* global $*/
+/* global Snap*/
+/* global google*/
+;(function(){
+	"use strict";
+	var Contact = {};
+	var map, whereIAm;
+	function svgAnimate(f){
+		var computerScreen = f.select("#svg-screen"),
+			arms = f.select("#svg-arms"),
+			initialScreenColor="#fff",
+			alternateScreenColor="#ccc",
+			i=0;
+		
+		setInterval(function(){
+			i++;
+			computerScreen.animate({fill:i%2===0 ? initialScreenColor : alternateScreenColor}, 200);
+			if(i%7===0){
+				arms.removeClass("arms-down");
+				arms.addClass("arms-up");
+			}
+			else{
+				arms.removeClass("arms-up");
+				arms.addClass("arms-down");
+			}
+
+		}, 700);
+	}
+	function setAvailability(f){
+		var availability = 10-Math.round(Number($("#availability-percentage").attr("value"))/10);
+		var papers = f.select("#papers");
+		
+		var i = 1;
+		while(papers.select("rect:nth-child("+i+")")){
+			papers.select("rect:nth-child("+i+")").addClass("paper-out");
+			i++;
+		}
+		i=1;
+		var papersInterval = setInterval(function(){
+			if(!papers.select("rect:nth-child("+(i+10)+")") || i>availability){
+				clearInterval(papersInterval);
+				return;
+			}
+			papers.select("rect:nth-child("+i+")").removeClass("paper-out");
+			papers.select("rect:nth-child("+i+")").addClass("paper-in");
+			papers.select("rect:nth-child("+(i+10)+")").removeClass("paper-out");
+			papers.select("rect:nth-child("+(i+10)+")").addClass("paper-in");
+			i++;
+		}, 200);
+	}
+	function resizeMap(){
+		map.setCenter(whereIAm);
+	}
+	function addMarker(whereMarkerIs){
+		var	icon = new google.maps.MarkerImage("images/marker.png", null, null, null, new google.maps.Size(144,192));
+		var marker = new google.maps.Marker({
+						position:whereMarkerIs,
+						map:map,
+						flat:true,
+						title:"SuperIRis",
+						icon:icon,
+						optimized:false,
+						animation: google.maps.Animation.DROP
+					});
+	}
+
+	Contact.obfuscateMailTo = function(){
+		// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+		// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+		var coded = "MbyS@JOtlGQGQJ.ZbL",
+			key = "stZ5MUTquSkAXVl2Q4J7RxnPF3OgBmdfyWrHjEIoDN1CzpcLhv80Ga9Y6beKiw",
+			shift=coded.length,
+			link="",
+			ltr;
+		for (var i=0; i<coded.length; i++) {
+			if (key.indexOf(coded.charAt(i))===-1) {
+			  ltr = coded.charAt(i);
+			  link += (ltr);
+			}
+			else {     
+			  ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length;
+			  link += (key.charAt(ltr));
+			}
+		}
+		$("#contact-mail").attr("href", "mailto:"+link);
+	};
+	Contact.setFreelanceStatusSVG = function(){
+		if(typeof Snap !== "function"){
+			console.error("No se encuentra la librería de Snap.svg");
+			return;
+		}
+		var s = new Snap("#me-working-status");
+		Snap.load("images/freelance-status.svg", function(f){
+			svgAnimate(f);
+			setAvailability(f);
+			s.append(f);
+		});
+	};
+	Contact.setMap = function(){
+		console.log("set map");
+		var whereMarkerIs = new google.maps.LatLng(19.368806, -99.134445),
+			features = [{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"administrative.province","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#e3e3e3"}]},{"featureType":"landscape.natural","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"color":"#cccccc"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.line","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"transit.station.airport","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#FFFFFF"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]}],
+			CUSTOM_STYLE_MAP = "custom_style",
+			
+			styledMapOptions = {
+				name: "Custom Style"
+			},
+			customMapType = new google.maps.StyledMapType(features, styledMapOptions),
+			mapOptions;
+		whereIAm = new google.maps.LatLng(19.468806, -99.134445);
+		mapOptions = {
+				zoom:10,
+				center:whereIAm,
+				mapTypeControlOptions: {
+					mapTypeIds: [google.maps.MapTypeId.ROADMAP, CUSTOM_STYLE_MAP]
+				},
+				mapTypeId: CUSTOM_STYLE_MAP,
+				disableDefaultUI: true,
+				draggable:false,
+				backgroundColor:"#fff",
+				disableDoubleClickZoom:true,
+				scrollwheel: false,
+				maxZoom:15
+			};
+		map = new google.maps.Map(document.getElementById("map"), mapOptions);
+		map.mapTypes.set(CUSTOM_STYLE_MAP, customMapType);
+		setTimeout(function(){
+			addMarker(whereMarkerIs);
+		}, 2000);
+		
+
+	};
+	Contact.init = function(){
+		Contact.obfuscateMailTo();
+		Contact.setFreelanceStatusSVG();
+		google.maps.event.addDomListener(window, "load", Contact.setMap);
+		google.maps.event.addDomListener(window, "resize", resizeMap);
+	};
+	module.exports = Contact;
+
+})();
+},{}],6:[function(require,module,exports){
+"use strict";
+/* global $*/
+;(function(){
+	var Home = {};
+	var AnimatedJsonSprite = require("../lib/AnimatedJsonSprite.js");
+	var body = $("html, body");
+
+	function onScrollHomeDown(e){
+		body.animate({scrollTop:$("#intro-container").height()}, "500", "swing");
+	}
+
+	
+
+	Home.init = function(){
+		$("#home-down-btn").on("click", onScrollHomeDown);
+		Home.homeMe = new AnimatedJsonSprite("spritesheets/homes-normal.png", document.getElementById("me"), {loop:true, frameRate:40});
+		Home.homeMe.start();
+	};
+	module.exports = Home;
+})();
+},{"../lib/AnimatedJsonSprite.js":2}],7:[function(require,module,exports){
 (function( factory ) {
 	if (typeof define !== 'undefined' && define.amd) {
 		define([], factory);
