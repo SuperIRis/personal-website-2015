@@ -10,6 +10,11 @@ $headerWhite:#f5f5f5;
 $headerBorder:#c6c6c6;
 $menuGreen:#9ac21e;
 
+$loaderColor1:lighten($menuGreen, 15%);
+$loaderColor2:#666;
+$loaderColor3:darken($menuGreen, 15%);
+$loaderColor4:#ccc;
+
 @mixin menu-grad($pos){
 	background: #9ac21e; /* Old browsers */
 	background: -moz-linear-gradient(top, #9ac21e $pos, #ffffff 100%-$pos); /* FF3.6+ */

@@ -7,12 +7,12 @@
 
 	var Aboutme = {};
 	
-	//var ScrollMonitor = require("../vendor/scrollMonitor.js");
+	var ScrollMonitor = require("../vendor/scrollMonitor.js");
 	
 	var AnimatedNumber = require("../lib/AnimatedNumber.js");
 	var percentageColors = ["#9ac21e", "#ffd43d", "#00ccd3"];
-	var graphs = $(".circle-graph"), circles = [], config;
-	//var graphsWatcher = ScrollMonitor.create($("#programming-skills")[0]);
+	var circles = [], config;
+	var graphsWatchers = [];
 	//var statsWatcher = ScrollMonitor.create($("#stats")[0]);
 	var animatedStats=[];
 	function svgAnimate(f){
@@ -55,34 +55,32 @@
 			animatedStats[animatedStats.length-1].init();
 		}
 	}
-	function animateStats(){
-		console.log("animate stats");
-		for(var j = 0, limit2 = animatedStats.length; j<limit2; j++){
-			animatedStats[j].start();
-		}
-	}
-	function createGraphs(){
-		for(var i = 0, limit = graphs.length; i<limit; i++){
-			
-			config = {
-				id:			graphs[i].id,
-				value: 		$(graphs[i]).attr("data-percentage"),
-				radius: 	25,
-				duration: 	1000,
-				/* jshint ignore:start */
-				text: 		function(value){return "";},
-				/* jshint ignore:end */
-				textClass: 	"circle-graph-"+getIdByPercentage($(graphs[i]).attr("data-percentage")),
-				width: 		5,
-				colors: 	["#e1e1e1", percentageColors[getIdByPercentage($(graphs[i]).attr("data-percentage"))]]
-			};
+	
+	function createGraph(jElement){
+		//for(var i = 0, limit = graphs.length; i<limit; i++){
+			if(!jElement.data("circle-graph")){
+				jElement.data("circle-graph", true);
+				config = {
+					id:			jElement[0].id,
+					value: 		jElement.attr("data-percentage"),
+					radius: 	25,
+					duration: 	1000,
+					/* jshint ignore:start */
+					text: 		function(value){return "";},
+					/* jshint ignore:end */
+					textClass: 	"circle-graph-"+getIdByPercentage(jElement.attr("data-percentage")),
+					width: 		5,
+					colors: 	["#e1e1e1", percentageColors[getIdByPercentage(jElement.attr("data-percentage"))]]
+				};
 
-			circles.push(Circles.create(config));
-		}
+				circles.push(Circles.create(config));
+			}
+			
+		//}
 	}
 	function animateRandomFacts(){
 		var factToGo, factToAppear;
-		var factsInterval = setInterval(function(){			
+		setInterval(function(){			
 			factToAppear = $("#random-facts").find(".active").next().length===0 ? $("#random-facts").find("li:nth-child(1)") :  $("#random-facts").find(".active").next();
 			factToGo = $("#random-facts").find(".active").addClass("unshown").removeClass("active");
 			factToAppear.removeClass("hidden").addClass("active").addClass("unshown");
@@ -93,10 +91,11 @@
 		},5000);
 	}
 	
-	/*graphsWatcher.enterViewport(function(){
-		
-	});
-	statsWatcher.enterViewport(function(){
+	function graphEntering(e, domElement){
+
+		createGraph($(domElement).find("figure"));
+	}
+	/*statsWatcher.enterViewport(function(){
 		animateStats();
 	});*/
 	
@@ -113,9 +112,13 @@
 	};
 	Aboutme.init = function(){
 		setAnimateStats();
-		createGraphs();
+		//createGraphs();
 		animateRandomFacts();
 		Aboutme.setSVG();
+		for (var i=0; i<$("#programming-skills li").length; i++){
+			graphsWatchers.push(ScrollMonitor.create($("#programming-skills li")[i], -10));
+			graphsWatchers[graphsWatchers.length-1].enterViewport(graphEntering);
+		}
 	};
 
 	module.exports = Aboutme;

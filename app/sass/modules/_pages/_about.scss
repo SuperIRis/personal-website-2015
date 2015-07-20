@@ -1,7 +1,5 @@
 .aboutme-container{
 	background-color:white;
-	position:relative;
-	@include transition-transform(.3s, ease-out);
 }
 .stats{
 	background-color:$menuGreen;

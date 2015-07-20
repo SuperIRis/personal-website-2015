@@ -45,17 +45,17 @@
           </ul>
         </nav>
       </header>
-      <main id="main-container" class="contact-container">
+      <main id="main-container" class="container contact-container">
         <aside id="map" class="map"></aside>
         <article class="freelance-status">
           <p>¿Tienes algo en mente? Escríbeme un mensaje o envíame un tweet. Actualmente trabajo de tiempo completo en Element, pero estoy disponible para proyectos interesantes como freelance.</p>
-          <ul class="contact-addresses">
+          <!--<ul class="contact-addresses">
             <li><a id="contact-twitter" href="http://twitter.com/superiris" target="_blank"><i class="fa fa-twitter"></i> superiris</a></li>
             <li><a id="contact-github" href="http://github.com/superiris" target="_blank"><i class="fa fa-github"></i> superiris</a></li>
             <li><a id="contact-tumblr" href="http://superiris.tumblr.com" target="_blank"><i class="fa fa-tumblr"></i> superiris</a></li>
             <li><a id="contact-linkedin" href="https://mx.linkedin.com/in/superiris" target="_blank"><i class="fa fa-linkedin"></i> superiris</a></li>
             <li><a id="contact-mail" href="#" target="_blank"><i class="fa fa-envelope-o"></i> hola[at]superiris.com</a></li>
-          </ul><figure class="me-working">
+          </ul>--><figure class="me-working">
             <figcaption>
               <p>Disponibilidad actual para freelance:</p>
               <meter class="availability-percentage" id="availability-percentage" min="0" max="100" value="20">
@@ -80,15 +80,16 @@
             <label>Mensaje</label>
             <textarea name="contact-message" id="contact-message" required></textarea>
           </p>
-          <p>
+          <p class="submit">
             <button type="submit" class="submit-btn square-btn">Enviar</button>
           </p>
+          <p class="note">*Si no te gustan los formularios, escríbeme a <a id="contact-mail" href="#" target="_blank">hola[at]superiris.com</a> o <a href="https://twitter.com/intent/tweet?text=@SuperIRis+Hola+:)&related=superiris" target="_blank" data-popup="twitter">envíame un tweet</a></p>
         </form>
         </div>
       </main>
       <div class="push"></div>
     </div>
-    <footer class="main-footer">
+    <footer id="main-footer" class="main-footer">
       <nav class="footer-menu">
         <ul>
           <li>¡Sígueme!</li>

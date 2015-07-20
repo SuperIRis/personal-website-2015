@@ -139,7 +139,7 @@
 			listenerToTriggerListI = listeners.length;
 			while( listenerToTriggerListI-- ) {
 				listener = listeners[listenerToTriggerListI];
-				listener.callback.call( self, latestEvent );
+				listener.callback.call( self, latestEvent, watchItem );
 				if (listener.isOne) {
 					listeners.splice(listenerToTriggerListI, 1);
 				}
@@ -255,7 +255,7 @@
 				case event === FULLYENTERVIEWPORT && this.isFullyInViewport:
 				case event === EXITVIEWPORT && this.isAboveViewport && !this.isInViewport:
 				case event === PARTIALLYEXITVIEWPORT && this.isAboveViewport:
-					callback.call( this, latestEvent );
+					callback.call( this, latestEvent, this.watchItem );
 					if (isOne) {
 						return;
 					}

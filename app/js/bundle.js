@@ -7,12 +7,26 @@
 	var Aboutme = require("./sections/aboutme.js");
 	var Contact = require("./sections/contact.js");
 	var Home = require("./sections/home.js");
-	var ScrollMonitor = require("./vendor/scrollMonitor.js");
+	//var ScrollMonitor = require("./vendor/scrollMonitor.js");
 	function onToggleMobileMenu(e){
 		$(e.currentTarget).toggleClass("active");
 		$("#main-container").toggleClass("mobile-menu-on");
+		$("#main-footer").toggleClass("mobile-menu-on");
 	}
-	
+	function onOpenPopup(e){
+		e.preventDefault();
+		var url, width=500, height=400, top, left;
+		if($(e.currentTarget).attr("href")){
+			url = $(e.currentTarget).attr("href");
+		}
+		if($(e.currentTarget).attr("data-popup")==="twitter"){
+			width = 550;
+			height=320;
+		}
+		top = ($(window).height()/2)-(height/2);
+		left = ($(window).width()/2)-(width/2);
+		window.open(url, $(e.currentTarget).attr("data-popup"), "width="+width+", height="+height+", left="+left+", top="+top);
+	}
 	
 	switch(page){
 		case "index":
@@ -29,11 +43,157 @@
 			console.warn("Se desconoce el html:", page);
 	}
 	$("#mobile-menu").on("click", onToggleMobileMenu);
+	$("[data-popup]").on("click", onOpenPopup);
 
 })();
 
 
-},{"./sections/aboutme.js":4,"./sections/contact.js":5,"./sections/home.js":6,"./vendor/scrollMonitor.js":7}],2:[function(require,module,exports){
+},{"./sections/aboutme.js":5,"./sections/contact.js":6,"./sections/home.js":7}],2:[function(require,module,exports){
+module.exports = {
+	"projects":[
+		{
+			"id":1,
+			"name":"Batalla 300",
+			"client":"Warner",
+			"via":"Element",
+			"type":"Sitio web",
+			"tech":"nodejs + twitter api",
+			"year":"2014",
+			"importance":2,
+			"images":{
+				"home":"home-warner-batalla300.jpg",
+				"thumb":"projects-warner-batalla300.jpg",
+				"detail":[
+					"projects-warner-batalla300-1.jpg",
+					"projects-warner-batalla300-2.jpg",
+					"projects-warner-batalla300-3.jpg"
+				]
+			},
+			"video":"",
+			"urls":["http://batalla300.element.com.mx"],
+			"participation":"Desarrollo en NodeJS para backend e implementación Javascript del sitio.",
+			"about":"La segunda parte de la película 300 estaba cerca de estrenarse en México y querían generar expectativa entre la comunidad. Dado que el argumento de la película se desarrollaba en batallas navales de griegos contra persas, se propuso un juego al estilo “battleship” a través de Twitter en contra del ejército persa (los “villanos” de la película).",			
+			"technically":"El proyecto se desarrolló en NodeJS con MySQL y la API de Twitter. A través de ésta, se creaba un stream que monitoreaba en todo momento cualquier mención al hashtag #Batalla300 y la guardaba en base de datos. Un demonio corriendo cada 30 segundos descargaba todos los tweets nuevos y contestaba de acuerdo con el caso a través de literalmente un ejército de cuentas de soldados, capitanes, comandantes y demás militares persas. Cada turno lo iniciaba el usuario intentando hundir los barcos del enemigo dentro de un mapa variable (3x3 o 4x4 espacios según el nivel), en cierto número de tiros. De lograrlo, avanzaba al siguiente nivel y así sucesivamente hasta llegar con Artemisa, el personaje antagónico de la película.",
+			"curious":"Originalmente no estábamos seguros de que la idea fuera realizable, en teoría lo era pero con APIs externas es difícil estar seguro hasta no hacer pruebas. Tuvimos que hacer varios ajustes debido a las políticas de Twitter y fue un gran riesgo dado que el tiempo estaba muy limitado y el tiempo de pruebas fue corto, pero resultó en un gran proyecto muy divertido de hacer, que generó casi 20,000 tweets de juego."
+		},
+		{
+			"id":2,
+			"name":"Rescate Xtreme",
+			"client":"Speed Stick",
+			"via":"Element",
+			"type":"Juego HTML5",
+			"tech":"html5 + javascript",
+			"year":"2015",
+			"importance":2,
+			"images":{
+				"home":"home-speedstick-rescatextreme.jpg",
+				"thumb":"projects-speedstick-rescatextreme-1.jpg"
+			},
+			"video":"",
+			"urls":["http://rescatextreme.com"],
+			"participation":"Desarrollo del juego en Javascript con PhaserJS, maquetado y programación del sitio.",
+			"about":"Speed Stick pretendía desarrollar un juego para atraer usuarios jóvenes a ",
+			"technically":"Utilicé el framework de PhaserJS ",
+			"curious":""
+		},
+		{
+			"id":3,
+			"name":"Mundo Inspireka",
+			"client":"Sonrics",
+			"via":"Element",
+			"type":"Juego HTML5",
+			"tech":"html5 + javascript",
+			"year":"2015",
+			"importance":1,
+			"images":{
+				"home":"home-sonrics-inspireka.jpg",
+				"thumb":"projects-sonrics-inspireka.jpg",
+				"detail":[
+					"projects-sonrics-inspireka-1.jpg",
+					"projects-sonrics-inspireka-2.jpg",
+					"projects-sonrics-inspireka-3.jpg"
+				]
+			},
+			"video":"https://www.youtube.com/embed/F88z4-s3FJE",
+			"urls":["http://sonrics.com.mx/mundoinspireka"],
+			"participation":"Desarrollo del juego en Javascript con PhaserJS. Creación de concepto y diseño de niveles.",
+			"about":"El sitio de Sonrics alberga varios juegos con el tema de sus productos principales. Al convertirse Inspireka en una línea de varios dulces, surgió la necesidad de generar una nueva sección con su propio juego. El cliente deseaba que resaltáramos las cualidades de cada uno de los dulces, reforzando la idea de construcción y creación. La idea entonces se enfocó en utilizar cada dulce como un bloque de construcción con el cual Fink (la mascota de Inspireka), se abriera camino para atravesar los niveles.",
+			"technically":"Utilicé el framework de PhaserJS y la herramienta de Tilemap para crear cada uno de los niveles, en base a un spritesheet.",
+			"curious":"La parte más difícil fue el diseño de los niveles. Es el primer juego de niveles tipo puzzle que realizo y tenía que hacerlos de forma que fueran posibles de resolver, pero no demasiado obvios."
+		},
+		{
+			"id":4,
+			"name":"Minitoons",
+			"client":"Metlife",
+			"via":"Wunderman",
+			"type":"Aplicación web",
+			"tech":"html5 + javascript",
+			"year":"2013",
+			"importance":1,
+			"images":{
+				"thumb":"projects-metlife-minitoons.jpg",
+				"detail":[
+					"projects-metlife-minitoons-1.jpg",
+					"projects-metlife-minitoons-2.jpg",
+					"projects-metlife-minitoons-3.jpg",
+					"projects-metlife-minitoons-4.jpg",
+					"projects-metlife-minitoons-5.jpg",
+				]
+			},
+			"video":"https://www.youtube.com/embed/G4__MYjhEJo",
+			"urls":["https://www.minitoonsapp.com/"],
+			"participation":"Desarrollo en PHP y Javascript (dentro de un equipo de trabajo).",
+			"about":"Pretendíamos desarrollar una app para generar avatares al estilo de Peanuts. Esto con el objetivo de utilizarlas como foto de perfil y/o de portada, pudiendo escoger todos los aspectos incluyendo ropa, fondos, color de piel, cabello y rasgos faciales.",
+			"technically":"Esta app está pensada para tres idiomas: inglés, español y portugués. Se cargaron los textos dinámicamente mediante PHP, junto con MySQL. El proceso de generar el avatar fue manejado con canvas y Javascript, con la ayuda de jQuery.",
+			"curious":"El desarrollo se complicó muchísimo porque el cliente requirió soporte para IE8. Hubo que hacer un fallback en AS3 para compensar la falta de canvas en este browser, pero dadas las limitaciones para cierta longitud en base64, hubo que invertirle mucho más tiempo del esperado."
+		},
+		{
+			"id":5,
+			"name":"Sitio web",
+			"client":"Sonrics",
+			"via":"Element",
+			"type":"Sitio web",
+			"tech":"html5 + css + js",
+			"year":"2012",
+			"importance":1,
+			"images":{
+
+			},
+			"video":"https://www.youtube.com/embed/YKi-4Tg6OPE",
+			"urls":[],
+			"participation":"Maquetado en HTML5 y CSS con efectos en Javascript.",
+			"about":"",
+			"technically":"",
+			"curious":""
+		},
+		{
+			"id":6,
+			"name":"Mustang 50 años",
+			"client":"Ford",
+			"via":"Element",
+			"type":"Aplicación web",
+			"tech":"html5 + css + js",
+			"year":"2014",
+			"importance":1,
+			"images":{
+
+			},
+			"video":"https://www.youtube.com/embed/nbuzxBZuElY",
+			"urls":[],
+			"participation":"",
+			"about":"",
+			"technically":"",
+			"curious":""
+		}
+
+	]
+}
+
+
+
+
+
+},{}],3:[function(require,module,exports){
 ;(function(){
 	"use strict";
 	var ajaxLoad = function(url, callback){
@@ -247,7 +407,7 @@
 
  
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 ;(function(){
 	"use strict";
 	function AnimatedNumber(domElement){
@@ -255,11 +415,22 @@
 	}
 	AnimatedNumber.prototype.init = function(){
 		this.originalNumberString = this.domElement.innerHTML;
-		this.originalNumber = Number(this.domElement.innerHTML.replace("+", ""));
+		this.originalNumber = Number(this.domElement.innerHTML.replace(/\D/g, ""));
 		this.start();
 	};
 	AnimatedNumber.prototype.intervalExec = function(){
+		var that = this;
 		this.tempNumber++;
+		if(this.domElement.className.indexOf("appearing")===-1){
+			this.domElement.className = this.domElement.className+" appearing";
+		}
+		else{
+			that.domElement.className = that.domElement.className.replace("appearing", "");
+		}
+		setTimeout(function(){
+			//that.domElement.className = that.domElement.className.replace("appearing", "");
+		}, 190);
+		
 		this.domElement.innerHTML = this.tempNumber;
 		if(this.tempNumber>this.originalNumber){
 			this.domElement.innerHTML = this.originalNumberString;
@@ -273,7 +444,7 @@
 	};
 	module.exports = AnimatedNumber;
 })();
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /* global $*/
 /* global Circles*/
 /* global Snap*/
@@ -283,12 +454,12 @@
 
 	var Aboutme = {};
 	
-	//var ScrollMonitor = require("../vendor/scrollMonitor.js");
+	var ScrollMonitor = require("../vendor/scrollMonitor.js");
 	
 	var AnimatedNumber = require("../lib/AnimatedNumber.js");
 	var percentageColors = ["#9ac21e", "#ffd43d", "#00ccd3"];
-	var graphs = $(".circle-graph"), circles = [], config;
-	//var graphsWatcher = ScrollMonitor.create($("#programming-skills")[0]);
+	var circles = [], config;
+	var graphsWatchers = [];
 	//var statsWatcher = ScrollMonitor.create($("#stats")[0]);
 	var animatedStats=[];
 	function svgAnimate(f){
@@ -331,34 +502,32 @@
 			animatedStats[animatedStats.length-1].init();
 		}
 	}
-	function animateStats(){
-		console.log("animate stats");
-		for(var j = 0, limit2 = animatedStats.length; j<limit2; j++){
-			animatedStats[j].start();
-		}
-	}
-	function createGraphs(){
-		for(var i = 0, limit = graphs.length; i<limit; i++){
-			
-			config = {
-				id:			graphs[i].id,
-				value: 		$(graphs[i]).attr("data-percentage"),
-				radius: 	25,
-				duration: 	1000,
-				/* jshint ignore:start */
-				text: 		function(value){return "";},
-				/* jshint ignore:end */
-				textClass: 	"circle-graph-"+getIdByPercentage($(graphs[i]).attr("data-percentage")),
-				width: 		5,
-				colors: 	["#e1e1e1", percentageColors[getIdByPercentage($(graphs[i]).attr("data-percentage"))]]
-			};
+	
+	function createGraph(jElement){
+		//for(var i = 0, limit = graphs.length; i<limit; i++){
+			if(!jElement.data("circle-graph")){
+				jElement.data("circle-graph", true);
+				config = {
+					id:			jElement[0].id,
+					value: 		jElement.attr("data-percentage"),
+					radius: 	25,
+					duration: 	1000,
+					/* jshint ignore:start */
+					text: 		function(value){return "";},
+					/* jshint ignore:end */
+					textClass: 	"circle-graph-"+getIdByPercentage(jElement.attr("data-percentage")),
+					width: 		5,
+					colors: 	["#e1e1e1", percentageColors[getIdByPercentage(jElement.attr("data-percentage"))]]
+				};
 
-			circles.push(Circles.create(config));
-		}
+				circles.push(Circles.create(config));
+			}
+			
+		//}
 	}
 	function animateRandomFacts(){
 		var factToGo, factToAppear;
-		var factsInterval = setInterval(function(){			
+		setInterval(function(){			
 			factToAppear = $("#random-facts").find(".active").next().length===0 ? $("#random-facts").find("li:nth-child(1)") :  $("#random-facts").find(".active").next();
 			factToGo = $("#random-facts").find(".active").addClass("unshown").removeClass("active");
 			factToAppear.removeClass("hidden").addClass("active").addClass("unshown");
@@ -369,10 +538,11 @@
 		},5000);
 	}
 	
-	/*graphsWatcher.enterViewport(function(){
-		
-	});
-	statsWatcher.enterViewport(function(){
+	function graphEntering(e, domElement){
+
+		createGraph($(domElement).find("figure"));
+	}
+	/*statsWatcher.enterViewport(function(){
 		animateStats();
 	});*/
 	
@@ -389,16 +559,20 @@
 	};
 	Aboutme.init = function(){
 		setAnimateStats();
-		createGraphs();
+		//createGraphs();
 		animateRandomFacts();
 		Aboutme.setSVG();
+		for (var i=0; i<$("#programming-skills li").length; i++){
+			graphsWatchers.push(ScrollMonitor.create($("#programming-skills li")[i], -10));
+			graphsWatchers[graphsWatchers.length-1].enterViewport(graphEntering);
+		}
 	};
 
 	module.exports = Aboutme;
 })();
 
 
-},{"../lib/AnimatedNumber.js":3}],5:[function(require,module,exports){
+},{"../lib/AnimatedNumber.js":4,"../vendor/scrollMonitor.js":8}],6:[function(require,module,exports){
 /* global $*/
 /* global Snap*/
 /* global google*/
@@ -540,16 +714,58 @@
 	module.exports = Contact;
 
 })();
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 /* global $*/
 ;(function(){
 	var Home = {};
 	var AnimatedJsonSprite = require("../lib/AnimatedJsonSprite.js");
+	var PROJECTS = require("../../data/projects.js");
+	var ScrollMonitor = require("../vendor/scrollMonitor.js");
 	var body = $("html, body");
+	var projectsWatcher;
+	
 
 	function onScrollHomeDown(e){
 		body.animate({scrollTop:$("#intro-container").height()}, "500", "swing");
+	}
+	function parseProjects(){
+		//find home projects
+		var projects = PROJECTS.projects;
+		Home.projects = [];
+		for(var i =0; i<projects.length; i++){
+			if(projects[i].images && projects[i].images.home){
+				Home.projects.push(projects[i]);
+			}
+		}
+		
+	}
+	function setProjects(){
+		var jProjects = $("#projects-preview-list").find("li");
+		var loadedProjects = 0;
+		for(var i = 0; i<jProjects.length; i++){
+			$(jProjects[i]).find(".project-title").html(Home.projects[i].name);
+			$(jProjects[i]).find(".project-tech").html(Home.projects[i].tech);
+			$("<img/>").attr("data-index", i).attr("src", "images/projects/"+Home.projects[i].images.home).load(function() {
+				$(this).remove();
+				$(jProjects[$(this).attr("data-index")]).find(".project-preview-item").css("background-image", "url('images/projects/"+Home.projects[$(this).attr("data-index")].images.home+"')");
+				$(jProjects[$(this).attr("data-index")]).removeClass("loading");
+				loadedProjects++;
+				if(loadedProjects === jProjects.length){
+					setScrollMonitor();
+				}
+			});
+		}
+
+	}
+	function setScrollMonitor(){
+		projectsWatcher = ScrollMonitor.create($("#projects-preview-list")[0], -10);
+		projectsWatcher.enterViewport(function(){
+			$("#projects-preview-list").removeClass("unshown");
+		});
+		projectsWatcher.exitViewport(function(){
+			$("#projects-preview-list").addClass("unshown");
+		});
 	}
 
 	
@@ -558,10 +774,14 @@
 		$("#home-down-btn").on("click", onScrollHomeDown);
 		Home.homeMe = new AnimatedJsonSprite("spritesheets/homes-normal.png", document.getElementById("me"), {loop:true, frameRate:40});
 		Home.homeMe.start();
+		parseProjects();
+		setProjects();
+
+
 	};
 	module.exports = Home;
 })();
-},{"../lib/AnimatedJsonSprite.js":2}],7:[function(require,module,exports){
+},{"../../data/projects.js":2,"../lib/AnimatedJsonSprite.js":3,"../vendor/scrollMonitor.js":8}],8:[function(require,module,exports){
 (function( factory ) {
 	if (typeof define !== 'undefined' && define.amd) {
 		define([], factory);
@@ -703,7 +923,7 @@
 			listenerToTriggerListI = listeners.length;
 			while( listenerToTriggerListI-- ) {
 				listener = listeners[listenerToTriggerListI];
-				listener.callback.call( self, latestEvent );
+				listener.callback.call( self, latestEvent, watchItem );
 				if (listener.isOne) {
 					listeners.splice(listenerToTriggerListI, 1);
 				}
@@ -819,7 +1039,7 @@
 				case event === FULLYENTERVIEWPORT && this.isFullyInViewport:
 				case event === EXITVIEWPORT && this.isAboveViewport && !this.isInViewport:
 				case event === PARTIALLYEXITVIEWPORT && this.isAboveViewport:
-					callback.call( this, latestEvent );
+					callback.call( this, latestEvent, this.watchItem );
 					if (isOne) {
 						return;
 					}

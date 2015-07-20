@@ -27,6 +27,16 @@ body {
 body{
   font-family: 'Lato', sans-serif;
 }
+::-moz-selection {
+  color:white;
+  background: $menuGreen;
+}
+
+::selection {
+  color:white;
+  background: $menuGreen;
+
+}
 
 $hamburgerWidth:30px;
 $hamburgerHeight:20px;
@@ -137,4 +147,216 @@ $breadHeight:4px;
       @include scale(0.98,0.9);
     }
   }
+}
+.appearing{
+  animation-name:appear;
+  animation-duration:.2s;
+}
+.container{
+  position:relative;
+  @include transition-transform(.3s, ease-out);
+
+}
+
+
+
+/* pong loader */
+@-moz-keyframes dots-loader {
+  0% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  8.33% {
+    -moz-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  16.67% {
+    -moz-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  25% {
+    -moz-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  33.33% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+  }
+  41.67% {
+    -moz-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  50% {
+    -moz-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  58.33% {
+    -moz-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  66.67% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  75% {
+    -moz-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  83.33% {
+    -moz-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+  }
+  91.67% {
+    -moz-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  100% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+}
+@-webkit-keyframes dots-loader {
+  0% {
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  8.33% {
+    -webkit-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  16.67% {
+    -webkit-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  25% {
+    -webkit-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  33.33% {
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+  }
+  41.67% {
+    -webkit-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  50% {
+    -webkit-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  58.33% {
+    -webkit-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  66.67% {
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  75% {
+    -webkit-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  83.33% {
+    -webkit-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+  }
+  91.67% {
+    -webkit-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  100% {
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+}
+@keyframes dots-loader {
+  0% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  8.33% {
+    -moz-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  16.67% {
+    -moz-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px 7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  25% {
+    -moz-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  33.33% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 -7px -7px 0 3px;
+  }
+  41.67% {
+    -moz-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  50% {
+    -moz-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  58.33% {
+    -moz-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 -7px 7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  66.67% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 -7px -7px 0 3px, $loaderColor3 -7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  75% {
+    -moz-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+    box-shadow: $loaderColor1 7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px -7px 0 3px, $loaderColor4 7px -7px 0 3px;
+  }
+  83.33% {
+    -moz-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+    box-shadow: $loaderColor1 7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 7px 7px 0 3px;
+  }
+  91.67% {
+    -moz-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px 7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+  100% {
+    -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+    box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  }
+}
+/* :not(:required) hides this rule from IE9 and below */
+.dots-loader:not(:required) {
+  left:50%;
+  overflow: hidden;
+  position: absolute;
+  top:50%;
+  text-indent: -9999px;
+  display: inline-block;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  border-radius: 100%;
+  -moz-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  -webkit-box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  box-shadow: $loaderColor1 -7px -7px 0 3px, $loaderColor2 7px -7px 0 3px, $loaderColor3 7px 7px 0 3px, $loaderColor4 -7px 7px 0 3px;
+  -moz-animation: dots-loader 5s infinite ease-in-out;
+  -webkit-animation: dots-loader 5s infinite ease-in-out;
+  animation: dots-loader 5s infinite ease-in-out;
+  -moz-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  @include rotate(45deg);
 }

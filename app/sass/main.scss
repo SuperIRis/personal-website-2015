@@ -42,7 +42,7 @@ body{
 	@include transition-transform(.3s, ease-out);
 }
 .mobile-menu-on{
-	@include translate(0, 140px);
+	@include translate(0, 128px);
 }
 .hamburger-btn{
 	float:right;

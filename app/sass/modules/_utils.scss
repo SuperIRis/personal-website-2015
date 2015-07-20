@@ -38,14 +38,16 @@
   // Defining animation easings
   $animationEasing: cubic-bezier(0.455, 0.030, 0.515, 0.955) !default;
 
+  
+
 
 /*==========  MIXINS  ==========*/
-@mixin transition ($prop: all, $time: 1s, $ease: linear) {
-    -webkit-transition: $prop $time $ease;
-    -moz-transition: $prop $time $ease;
-    -o-transition: $prop $time $ease;
-    -ms-transition: $prop $time $ease;
-    transition: $prop $time $ease;
+@mixin transition ($prop: all, $time: 1s, $ease: linear, $delay:0s) {
+    -webkit-transition: $prop $time $ease $delay;
+    -moz-transition: $prop $time $ease $delay;
+    -o-transition: $prop $time $ease $delay;
+    -ms-transition: $prop $time $ease $delay;
+    transition: $prop $time $ease $delay;
 }
 @mixin transition-transform($time:1s, $ease:linear){
   -webkit-transition: -webkit-transform $time $ease;
