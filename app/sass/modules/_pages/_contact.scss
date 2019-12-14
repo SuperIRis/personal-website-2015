@@ -28,6 +28,17 @@
 	font-weight:300;
 	
 }
+.form-sent{
+	text-align:center;
+	
+	font-weight:900;
+	font-size:1.2em;
+	color:$menuGreen;
+	img{
+		width: 100%;
+	}
+
+}
 .contact-addresses{
 	font-size:0.8em;
 	font-weight:400;
@@ -222,12 +233,15 @@
 }
 @media only screen and (min-width: 1000px) {
 
-	.freelance-status, .contact-form{
+	.freelance-status, .contact-form, .form-sent{
 		display: inline-block;
 		margin:2em 0;
 		padding:0 2em;
 		vertical-align: top;
 		width:50%;
+	}
+	.form-sent{
+		padding:2em;
 	}
 	.freelance-status{
 		border-right: 1px solid darken(white, 10%);

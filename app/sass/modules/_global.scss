@@ -141,11 +141,14 @@ $breadHeight:4px;
     @include transition(all, .2s, ease-out);
     @include scale(0,0);
   }
-  &:hover{
+  &:hover:not(.container){
     color:white;
     &:before{
       @include scale(0.98,0.9);
     }
+  }
+  &:focus{
+    outline:none;
   }
 }
 .appearing{
@@ -156,6 +159,9 @@ $breadHeight:4px;
   position:relative;
   @include transition-transform(.3s, ease-out);
 
+}
+.scroll-block{
+  overflow:hidden!important;
 }
 
 

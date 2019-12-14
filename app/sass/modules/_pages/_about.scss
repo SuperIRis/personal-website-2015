@@ -124,6 +124,16 @@
 	top:0;
 	left:50px;
 }
+.skill-label{
+	top:-14px;
+	left:-15px;
+	opacity: 0;
+	position: absolute;
+	height:78px;
+	@include scale(0.5,0.5);
+	@include transition(all, .1s, ease-out);
+}
+
 
 .circle-graph-0{
 	background:transparent url(../images/skills-icons.svg) 3px 5px no-repeat;
@@ -177,7 +187,7 @@
 		text-align: left;
 	}
 	.me-about{
-		background-color:white;
+		//background-color:white;
 		position:absolute;
 		top:14em;
 		padding-right:2em;
@@ -218,12 +228,30 @@
 			figure{
 				@include transition-transform(.1s, ease-out);
 			}
+			.skill-description{
+				@include transition-transform(.1s, ease-out);
+			}
+			.circle-graph-0, .circle-graph-1, .circle-graph-2{
+				@include transition-transform(.1s, ease-out);
+			}
 			&:hover figure{
-				@include rotate(10deg);
+				@include scale(2,2);
 			}
-			&:nth-child(2):hover figure, &:nth-child(3):hover figure, &:nth-child(6):hover figure, &:nth-child(7):hover figure, &:nth-child(10):hover figure{
+			&:hover .skill-description{
+				@include translate(25px, 0);
+			}
+			&:hover .circle-graph-0, &:hover .circle-graph-1, &:hover .circle-graph-2{
+				@include scale(0.6,0.6);
+			}
+			&:hover .skill-label{
+				opacity: 0.8;
+				@include scale(1,1);
+				@include transition(all, .1s, ease-out);
+
+			}
+			/*&:nth-child(2):hover figure, &:nth-child(3):hover figure, &:nth-child(6):hover figure, &:nth-child(7):hover figure, &:nth-child(10):hover figure{
 				@include rotate(-10deg);
-			}
+			}*/
 
 		}
 		p{

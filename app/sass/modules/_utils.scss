@@ -49,6 +49,13 @@
     -ms-transition: $prop $time $ease $delay;
     transition: $prop $time $ease $delay;
 }
+@mixin transition2 ($prop: all, $time: 1s, $ease: linear, $delay:0s, $prop2: all, $time2: 1s, $ease2: linear, $delay2:0s) {
+    -webkit-transition: $prop $time $ease $delay, $prop2 $time2 $ease2 $delay2;
+    -moz-transition: $prop $time $ease $delay, $prop2 $time2 $ease2 $delay2;
+    -o-transition: $prop $time $ease $delay, $prop2 $time2 $ease2 $delay2;
+    -ms-transition: $prop $time $ease $delay, $prop2 $time2 $ease2 $delay2;
+    transition: $prop $time $ease $delay, $prop2 $time2 $ease2 $delay2;
+}
 @mixin transition-transform($time:1s, $ease:linear){
   -webkit-transition: -webkit-transform $time $ease;
   -moz-transition: -moz-transform $time $ease;
@@ -95,6 +102,29 @@
     -o-transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
     -ms-transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
     transform: rotate($rotate) scale($scale) skew($skew) translate($translateX, $translateY);
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
 }
 
  

@@ -1,6 +1,6 @@
 
 .intro-container{
-	
+	min-height:700px;
 	background-size:50%;
 	width:100%;
 	h1{
@@ -179,6 +179,7 @@
   	}
   	.intro-container{
   		font-size:0.7em;
+  		min-height:600px;
   		height:64%;
   		margin:0 auto;
   		padding:10% 0 0;
@@ -241,7 +242,7 @@
   		padding:1em 1em 3em;
   	}
   	.project-preview-item{
-  		background-size:auto 110%;
+  		background-size:auto 130%;
   	}
 }
 @media only screen 
@@ -271,7 +272,7 @@
   		margin:1em 0 0 -14px;
   		outline:none;
   		position: absolute;
-  		//top:61%;
+  		top:85%;
   		width:32px;
   		@include border-radius(50%);
   		@include transition-transform(.3s, ease-out);
@@ -306,7 +307,7 @@
   	}
   	.projects-preview{
   		font-size:1.2em;
-  		margin:15em 0 0;
+  		//margin:15em 0 0;
   	}
   	.projects-preview-list{
   		//height:601px;
@@ -327,7 +328,9 @@
   		
   	}
   	.project-preview-item{
+  		
   		height:500px;
+
   	}
   	.b300-home{
   		background:url(../images/projects/home-warner-batalla300.jpg) center center no-repeat;
@@ -341,11 +344,27 @@
   		width:60%;
   	}
   	.project-preview-item{
-  		height:600px;
+  		  		height:600px;
   	}
 }
 
 
+@media only screen 
+  and (min-width: 1580px) {
+  	.project-preview-item{
+		background-size:100% auto;
+
+  	}
+  	.projects-preview-list{
+  		//height:601px;
+  		
+  		a:hover article{
+  			background-size:120% auto;
+  		}
+  		
+  		
+  	}
+}
 
 
 

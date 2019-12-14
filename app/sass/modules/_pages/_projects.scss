@@ -8,17 +8,28 @@
 	li{
 		//display: inline-block;
 	}
+
 }
 .project{
 	background-size:cover;
 	border:1px solid white;
+	cursor:pointer;
 	height:300px;
 	position:relative;
 	width:100%;
+	a{
+		display: block;
+		height:300px;
+		position:absolute;
+		top:0;
+		width:100%;
+
+	}
 
 }
 .project-info{
 	background-color:#1e1e1e;
+	border-bottom: 2px solid white;
 	bottom:0;
 	color:white;
 	font-size:0.8em;
@@ -39,15 +50,16 @@
 		margin:0;
 	}
 }
-.extra-info{
-	display:none;
-}
+
 @media only screen and (min-width: 600px) {
+	
 	.project{
 		display: inline-block;
+		font-size:0.9em;
 		position:relative;
 		vertical-align: top;
 		@include transition(all, .2s, ease-out, .2s);
+		
 		&:after{
 			background-color:rgba(0,0,0,0.5);
 			content:' ';
@@ -58,10 +70,13 @@
 			@include transition(opacity, .4s, ease-out, .2s);
 		}
 		&.s1{
-			width:25%;
+			width:50%;
 		}
 		&.s2{
 			width:50%;
+		}
+		&:nth-last-child(1):nth-child(odd){
+			width:100%;
 		}
 		h1, h2, h3{
 			@include transition(all, .2s, ease-out);
@@ -112,4 +127,20 @@
 		@include transition(all, .2s, ease-out, .2s);
 	}
 }
+@media only screen and (min-width: 800px) {
 
+	.project{
+		&.s1{
+			width:25%;
+		}
+		&.s2{
+			width:50%;
+		}
+		&.s1:nth-last-child(1):nth-child(odd){
+			width:25%;
+		}
+		&.s2:nth-last-child(1):nth-child(odd){
+			width:50%;
+		}
+	}
+}

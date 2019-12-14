@@ -8,22 +8,26 @@
 	var Aboutme = {};
 	
 	var ScrollMonitor = require("../vendor/scrollMonitor.js");
-	
+	var AnimatedLoader = require("../lib/AnimatedLoader.js");
 	var AnimatedNumber = require("../lib/AnimatedNumber.js");
 	var percentageColors = ["#9ac21e", "#ffd43d", "#00ccd3"];
 	var circles = [], config;
 	var graphsWatchers = [];
 	//var statsWatcher = ScrollMonitor.create($("#stats")[0]);
 	var animatedStats=[];
+	var svgInterval, randomFactsInterval;
 	function svgAnimate(f){
-		console.log("svg animate");
+		
 		var leftEye = f.select("#left-eye");
 		var rightEye = f.select("#right-eye");
 		var leftEyeClosed = f.select("#left-eye-closed");
 		var rightEyeClosed = f.select("#right-eye-closed");
+		if(!leftEye || !rightEye || !leftEyeClosed || !rightEyeClosed){
+			return console.error("No se encuentran los elementos en el svg\n", leftEye, rightEye, leftEyeClosed, rightEyeClosed);
+		}
 		leftEyeClosed.addClass("hidden");
 		rightEyeClosed.addClass("hidden");
-		setInterval(function(){
+		svgInterval = setInterval(function(){
 			leftEye.addClass("hidden");
 			rightEye.addClass("hidden");
 			leftEyeClosed.removeClass("hidden");
@@ -80,7 +84,7 @@
 	}
 	function animateRandomFacts(){
 		var factToGo, factToAppear;
-		setInterval(function(){			
+		randomFactsInterval = setInterval(function(){			
 			factToAppear = $("#random-facts").find(".active").next().length===0 ? $("#random-facts").find("li:nth-child(1)") :  $("#random-facts").find(".active").next();
 			factToGo = $("#random-facts").find(".active").addClass("unshown").removeClass("active");
 			factToAppear.removeClass("hidden").addClass("active").addClass("unshown");
@@ -98,17 +102,31 @@
 	/*statsWatcher.enterViewport(function(){
 		animateStats();
 	});*/
+	function onOpenSection(e){
+		e.preventDefault();
+		AnimatedLoader.loadSection($(e.currentTarget).attr("href"));
+	}
 	
 	Aboutme.setSVG = function(){
 		if(typeof Snap !== "function"){
 			console.error("No se encuentra la librería de Snap.svg");
 			return;
 		}
-		var s = new Snap("#me-about");
-		Snap.load("images/aboutme-me.svg", function(f){
-			svgAnimate(f);
-			s.append(f);
-		});
+		console.log("snap!");
+			var svg = new Snap("#me-about");
+		
+			Snap.load("images/aboutme-me.svg", function(f){
+				if(!Aboutme.snapLoaded){
+					svgAnimate(f);
+					svg.append(f);
+					Aboutme.snapLoaded = true;
+					console.log("snap loaded");
+				}
+				
+				
+			});
+		
+		
 	};
 	Aboutme.init = function(){
 		setAnimateStats();
@@ -119,6 +137,18 @@
 			graphsWatchers.push(ScrollMonitor.create($("#programming-skills li")[i], -10));
 			graphsWatchers[graphsWatchers.length-1].enterViewport(graphEntering);
 		}
+		$("#main-menu").on("click", "a", onOpenSection);
+	};
+	Aboutme.destroy = function(){
+		for(var i = 0; i<graphsWatchers.length; i++){
+			graphsWatchers[i].destroy();
+		}
+		graphsWatchers.length = 0;
+		/*Aboutme.svg.remove();
+		$("<figure id='me-about' class='me-about'></figure>").insertBefore("#random-facts");*/
+		Aboutme.snapLoaded = false;
+		clearInterval(svgInterval);
+		clearInterval(randomFactsInterval);
 	};
 
 	module.exports = Aboutme;

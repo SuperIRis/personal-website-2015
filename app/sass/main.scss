@@ -9,13 +9,36 @@ body{
 	background-color:$colorGrayLighter;
 	border-left:1px solid white;
 	border-right:1px solid white;
+  overflow-x:hidden;
 }
+.browsehappy{
+  background:url('../images/ie_eyes.png') no-repeat center center;
+  display: block;
+  height:100%;
+  vertical-align: middle;
+  width:100%;
+}
+.lteie9 body{
+  background-color:white;
+}
+.lteie9 .full-loader{
+  display: none!important;
+}
+.lteie9 #main-wrapper{
+  display: none;
+}
+.lteie9 #main-footer{
+  display: none!important;
+}
+
+
 .wrapper{
   background-color:white;
   min-height:100%;
   height:auto !important;
   height:100%;
   margin: 0 auto -84px;
+ 
 }
 
 
@@ -24,7 +47,7 @@ body{
 	padding:0.5%;
 	position:relative;
 	width:100%;
-	//z-index:3;
+	z-index:1;
 }
 .main-logo{
 	display: inline-block;
@@ -126,14 +149,87 @@ body{
 	}
 	a{
 		color:white;
+    display: block;
 		font-size:1.2em;
 		padding:0 .9em;
+    @include transition-transform(.1s, ease-out);
+    &:hover{
+      @include translate(0,-2px);
+    }
 	}
 }
+h1, h2{
+  margin:0;
+}
+.error{
+  color:red;
 
+  font-size:0.9em;
+  font-weight:300;
+  padding-left:0.5em;
+}
+.preload{
+  -webkit-transition: none!important;
+    -moz-transition: none!important;
+    -o-transition:none!important;
+    -ms-transition:none!important;
+  transition:none!important;
+}
+.full-loader{
+  height:100%;
+  left:0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index: 100;
+  .loader-back{
+    border:90px solid rgba(200,200,200,0.1);
+    background-color:#d7d7d7;
+    height:1000px;
+    left:50%;
+    margin-left:-500px;
+    position:absolute;
+    top:-300px;
+    width:1000px;
+    @include transition(all, 0.6s, ease-out);
+    @include border-radius(100%);
+    @include scale(1,1);
+  }
+  .loader-me{
+    left:2%;
+    margin:-200px auto 0;
+    position:relative;
+    top:50%;
+    @include scale(0.5,0.5);
+    @include transition(opacity, 0.2s, ease-out, 0.5s);
+  }
+
+  
+  @include transition(all, 0.6s, ease-out);
+  &.unshown {
+    //opacity:0;
+    @include transition(all, 0.6s, ease-out, 1.3s);
+    @include scale(0,0);
+    .loader-back{
+      //@include transition(all, 0.6s, ease-out, 0.8s);
+      @include scale(0,0);
+    }
+    .loader-me{
+      opacity: 0;
+      @include transition(opacity, 0.2s, ease-out, 0s);
+    }
+    
+  }
+}
 
 @media only screen 
   and (min-width: 600px) {
+    .full-loader{
+      .loader-back{
+        top:0;
+        @include scale(1.8,1.8);
+      }
+    }
   	.hamburger-btn{
   		display: none;
   	}
@@ -234,6 +330,21 @@ body{
   			display: inline-block;
   		}
   	}
+    .full-loader{
+      .loader-back{
+        @include scale(2.3,2.3);
+      }
+    }
+ 
+}
+@media only screen 
+  and (min-width: 1800px) {
+    
+    .full-loader{
+      .loader-back{
+        @include scale(3.3,3.3);
+      }
+    }
  
 }
 
